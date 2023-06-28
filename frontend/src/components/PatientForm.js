@@ -1,6 +1,8 @@
 import { useState} from "react"
+import { usePatientsContext } from '../hooks/usePatientsContext'
 
 const PatientForm = () => {
+    const { dispatch } = usePatientsContext()
     const [name, setName] = useState('')
     const [race, setRace] = useState('')
     const [age, setAge] = useState('')
@@ -32,6 +34,7 @@ const PatientForm = () => {
             setMobile('')
             setError(null)
             console.log('New Patient Added', json)
+            dispatch({type: 'CREATE_PATIENT', payload: json})
         }
     }
 
