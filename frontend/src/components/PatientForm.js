@@ -5,6 +5,7 @@ const PatientForm = () => {
     const [race, setRace] = useState('')
     const [age, setAge] = useState('')
     const [mobile, setMobile] = useState('')
+    const [error, setError] = useState(null)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -13,8 +14,25 @@ const PatientForm = () => {
     
         const response = await fetch('/api/patients', {
             method: 'POST',
-            body: JSON.stringify(patient)
+            body: JSON.stringify(patient),
+            headers: {
+                'Content-Type': 'application/json'
+            }
         })
+        const json = await response.json()
+
+        if(!response.ok) {
+            setError(json.error)
+        }
+
+        if(response.ok) {
+            setName('')
+            setRace('')
+            setAge('')
+            setMobile('')
+            setError(null)
+            console.log('New Patient Added', json)
+        }
     }
 
     return (
@@ -50,7 +68,10 @@ const PatientForm = () => {
             />
 
         <button>Add Patient</button>
+        {error && <div className="error">{error}</div>}
 
         </form>
     )
 }
+
+export default PatientForm

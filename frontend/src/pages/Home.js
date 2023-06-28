@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 
 import PatientDetails from '../components/PatientDetails'
 
+import PatientForm from '../components/PatientForm'
+
 const Home = () => {
     const [patients, setPatients] = useState(null)
 
@@ -24,6 +26,7 @@ const Home = () => {
                     <PatientDetails key={patient._id} patient={patient} />
                 ))}
             </div>
+            <PatientForm/>
         </div>
     )
 }
