@@ -1,0 +1,87 @@
+@import url('https://fonts.google.com/specimen/Caveat?preview.text=Meroni-Inc-Portal&preview.text_type=custom');
+/*Layout*/
+
+:root {
+  --primary: black;
+  --error: red;
+}
+
+body {
+  background: beige;
+  margin:  0 auto;
+  font-family: "Caveat";
+}
+
+header {
+  background: lavender;
+}
+
+header .container {
+  max-width: 1500px;
+  margin: 0auto;
+  padding: 10px 20px;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header a {
+  color: black;
+  text-decoration: none;
+}
+
+
+.pages {
+  max-width: 1500px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+/* homepage */
+.home {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 100px;
+}
+
+.patient-details {
+  background: lavender;
+  border-radius: 5px;
+  margin: 20px auto;
+  padding: 20px;
+  position:relative;
+  box-shadow: 2px 2px 5px black;
+}
+
+.patient-details h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  color: var(--primary);
+}
+
+.patient-details p {
+  margin: 0;
+  font-size: 0.9em;
+  color: black;
+}
+
+.patient-details span {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: lavender;
+  padding: 5px;
+  border-radius: 50%;
+  color: black;
+}
+
+.create {
+  background: lavender;
+  border-radius: 100px;
+  margin: 20px auto;
+  padding: 80px;
+  position:relative;
+  box-shadow: 2px 2px 5px black;
+}
+
