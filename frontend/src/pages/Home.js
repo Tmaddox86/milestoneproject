@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react'
-
+import { useEffect } from 'react'
+import { usePatientsContext } from '../hooks/usePatientsContext'
 import PatientDetails from '../components/PatientDetails'
 
 import PatientForm from '../components/PatientForm'
 
 const Home = () => {
-    const [patients, setPatients] = useState(null)
+    const {patients, dispatch} = usePatientsContext()
+
 
     useEffect(() => {
         const fetchPatients = async () => {
@@ -13,11 +14,11 @@ const Home = () => {
             const json = await response.json()
 
             if (response.ok) {
-                setPatients(json)
+                dispatch({type: 'SET_PATIENTS', payload: json})
             }
         }
         fetchPatients()
-    }, [])
+    }, [dispatch])
 
     return (
         <div className="home">

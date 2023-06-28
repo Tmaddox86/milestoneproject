@@ -1,6 +1,6 @@
 import { createContext, useReducer } from 'react'
 
-export const PatientContext = createContext()
+export const PatientsContext = createContext()
 
 export const patientsReducer = (state, action) => {
     switch (action.type) {
@@ -12,6 +12,8 @@ export const patientsReducer = (state, action) => {
                 return {
                     patients: [action.payload, ...state.patients]
                 }
+            default:
+                return state
     }
 }
 
@@ -20,13 +22,10 @@ export const PatientContextProvider = ({children}) => {
         patients: null
     })
 
-   //dispatch({type: 'SET_PATIENTS', payload: [{}, {}]})
-
-
     return (
-        <PatientContext.Provider value= {{state, dispatch}}>
+        <PatientsContext.Provider value= {{...state, dispatch}}>
             {children}
-        </PatientContext.Provider>
+        </PatientsContext.Provider>
     )
 }
 
