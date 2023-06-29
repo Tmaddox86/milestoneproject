@@ -77,8 +77,6 @@ header a {
 }
 
 /*New patient Form*/
-
-/* new workout form */
 label, input {
   display: block;
 }
@@ -95,7 +93,7 @@ form button {
   background: var(--primary);
   border: 0;
   color: #fff;
-  padding: 10px;
+  padding: 5px;
   font-family: "Poppins";
   border-radius: 4px;
   cursor: pointer;
@@ -117,4 +115,18 @@ div.error {
   position:relative;
   box-shadow: 2px 2px 5px black;
 }
+
+
+div.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid var(--error);
+  color: var(--error);
+  border-radius: 4px;
+  margin: 20px 0;
+}
+input.error {
+  border: 1px solid var(--error);
+}
+
 

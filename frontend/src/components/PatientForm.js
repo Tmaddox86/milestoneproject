@@ -8,6 +8,7 @@ const PatientForm = () => {
     const [age, setAge] = useState('')
     const [mobile, setMobile] = useState('')
     const [error, setError] = useState(null)
+    const [emptyFields, setEmptyFields] = useState([])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -25,6 +26,7 @@ const PatientForm = () => {
 
         if(!response.ok) {
             setError(json.error)
+            setEmptyFields(json.emptyFields)
         }
 
         if(response.ok) {
@@ -33,6 +35,7 @@ const PatientForm = () => {
             setAge('')
             setMobile('')
             setError(null)
+            setEmptyFields([])
             console.log('New Patient Added', json)
             dispatch({type: 'CREATE_PATIENT', payload: json})
         }
@@ -47,6 +50,7 @@ const PatientForm = () => {
                 type="text"
                 onChange={(e) => setName(e.target.value)}
                 value = {name}
+                className={emptyFields.includes('name') ? 'error' : ''}
             />
 
             <label>Patient Race</label>
@@ -61,6 +65,7 @@ const PatientForm = () => {
                 type="number"
                 onChange={(e) => setAge(e.target.value)}
                 value = {age}
+                className={emptyFields.includes('age') ? 'error' : ''}
             />
 
             <label>Patient Mobile</label>
@@ -68,6 +73,7 @@ const PatientForm = () => {
                 type="number"
                 onChange={(e) => setMobile(e.target.value)}
                 value = {mobile}
+                className={emptyFields.includes('mobile') ? 'error' : ''}
             />
 
         <button>Add Patient</button>

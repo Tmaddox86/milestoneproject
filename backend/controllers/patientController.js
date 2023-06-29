@@ -24,11 +24,27 @@ const getPatient = async (req,res) => {
     res.status(200).json(patient)
 }
 
-//Post new patient
+//Create new patient
 const createPatient = async(req,res) => {
 
     const {name, race, age, mobile} = req.body
 
+    let emptyFields = []
+    
+    if(!name) {
+        emptyFields.push('name')
+    }
+    if(!age) {
+        emptyFields.push('age')
+    }
+    if (!mobile) {
+        emptyFields.push('mobile')
+    }
+    if (emptyFields.length > 0) {
+        return res.status(400).json({ error: 'Please fill in all required fields', emptyFields })
+    }
+
+    //adds doc to db
     try{
         const patient = await Patient.create({name, race, age, mobile})
         res.status(200).json(patient)
