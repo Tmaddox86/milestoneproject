@@ -1,4 +1,4 @@
-import { PatientsContext} from '../context/PatientContext'
+import { PatientsContext} from '../context/PatientsContext'
 import { useContext }from 'react'
 
 export const usePatientsContext = () => {
