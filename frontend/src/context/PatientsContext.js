@@ -14,7 +14,7 @@ export const patientsReducer = (state, action) => {
         }
         case 'DELETE_PATIENT':
             return {
-                patients: state.patients.filter((w) => w._id !== action.payload._id)
+                patients: state.patients.filter(w => w._id !== action.payload._id)
         }
         default:
             return state
@@ -23,7 +23,7 @@ export const patientsReducer = (state, action) => {
 
 export const PatientsContextProvider = ({children}) => {
     const [state, dispatch] = useReducer(patientsReducer, {
-        patients: null
+        patients:null
     })
 
     return (

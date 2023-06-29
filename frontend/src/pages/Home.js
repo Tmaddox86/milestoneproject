@@ -18,6 +18,7 @@ const Home = () => {
             }
         }
         fetchPatients()
+
     }, [dispatch])
 
     return (
