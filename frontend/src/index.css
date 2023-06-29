@@ -1,40 +1,35 @@
 @import url('https://fonts.google.com/specimen/Caveat?preview.text=Meroni-Inc-Portal&preview.text_type=custom');
-/*Layout*/
 
+/* layout */
 :root {
-  --primary: black;
-  --error: red;
+  --primary: #140814;
+  --error: #e7195a;
 }
-
 body {
-  background: beige;
-  margin:  0 auto;
+  background: #76ebeb;
+  margin: 0;
   font-family: "Caveat";
 }
-
 header {
-  background: lavender;
+  background: #e08d8d;
 }
-
 header .container {
-  max-width: 1500px;
-  margin: 0auto;
+  max-width: 1400px;
+  margin: 0 auto;
   padding: 10px 20px;
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: space-between;
 }
-
 header a {
-  color: black;
+  color: #333;
   text-decoration: none;
 }
-
-
-.pages {
-  max-width: 1500px;
+.pages{
+  max-width: 1400px;
   padding: 20px;
   margin: 0 auto;
+  
 }
 
 /* homepage */
@@ -43,9 +38,8 @@ header a {
   grid-template-columns: 3fr 1fr;
   gap: 100px;
 }
-
 .patient-details {
-  background: lavender;
+  background: rgb(205, 226, 196);
   border-radius: 5px;
   margin: 20px auto;
   padding: 20px;
@@ -70,13 +64,13 @@ header a {
   top: 20px;
   right: 20px;
   cursor: pointer;
-  background: lavender;
+  background: rgb(209, 209, 228);
   padding: 5px;
   border-radius: 50%;
   color: black;
 }
 
-/*New patient Form*/
+/* new workout form */
 label, input {
   display: block;
 }
@@ -93,30 +87,19 @@ form button {
   background: var(--primary);
   border: 0;
   color: #fff;
-  padding: 5px;
+  padding: 10px;
   font-family: "Poppins";
   border-radius: 4px;
   cursor: pointer;
 }
-div.error {
-  padding: 10px;
-  background: #ffefef;
-  border: 1px solid var(--error);
-  color: var(--error);
-  border-radius: 4px;
-  margin: 20px 0;
-}
-
 .create {
-  background: lavender;
-  border-radius: 100px;
+  background: rgb(98, 223, 181);
+  border-radius: 25px;
   margin: 20px auto;
-  padding: 80px;
+  padding: 20px;
   position:relative;
   box-shadow: 2px 2px 5px black;
 }
-
-
 div.error {
   padding: 10px;
   background: #ffefef;
@@ -128,5 +111,3 @@ div.error {
 input.error {
   border: 1px solid var(--error);
 }
-
-
