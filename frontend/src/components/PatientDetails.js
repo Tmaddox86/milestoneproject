@@ -1,5 +1,10 @@
 import { usePatientsContext } from '../hooks/usePatientsContext'
 
+//date fns
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+
+
+
 const PatientDetails = ({ patient }) => {
 
     const {dispatch} = usePatientsContext()
@@ -21,8 +26,8 @@ const PatientDetails = ({ patient }) => {
             <p><strong>Race:</strong>{patient.race}</p>
             <p><strong>Age:</strong>{patient.age}</p>
             <p><strong>Mobile:</strong>{patient.mobile}</p>
-            <p>{patient.createdAt}</p>
-            <span onClick={handleClick}>Delete</span>
+            <p>{formatDistanceToNow(new Date(patient.createdAt), { addSuffix: true })}</p>
+            <span className='material-symbols-outlined' onClick={handleClick}>Delete</span>
         </div>
     )
 }
