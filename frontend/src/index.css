@@ -6,12 +6,12 @@
   --error: #e7195a;
 }
 body {
-  background: #76ebeb;
+  background: rgb(96, 231, 225);
   margin: 0;
   font-family: "Caveat";
 }
 header {
-  background: #e08d8d;
+  background:rgb(96, 231, 225);
 }
 header .container {
   max-width: 1400px;
@@ -39,7 +39,7 @@ header a {
   gap: 100px;
 }
 .patient-details {
-  background: rgb(205, 226, 196);
+  background: beige;
   border-radius: 5px;
   margin: 20px auto;
   padding: 20px;
@@ -93,7 +93,7 @@ form button {
   cursor: pointer;
 }
 .create {
-  background: rgb(236, 65, 43);
+  background: rgb(96, 231, 225);
   border-radius: 25px;
   margin: 20px auto;
   padding: 20px;
