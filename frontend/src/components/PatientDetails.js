@@ -4,8 +4,8 @@ const PatientDetails = ({ patient }) => {
 
     const {dispatch} = usePatientsContext()
 
-    const {handleClick} = async () => {
-        const response = await fetch('/api/patients' + patient._id, {
+    const handleClick = async () => {
+        const response = await fetch('/api/patients/' + patient._id, {
             method: 'DELETE'
         })
         const json = await response.json()
