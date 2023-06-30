@@ -1,7 +1,4 @@
 const express = require('express')
-
-const Patient = require('../models/patientModel')
-
 const {
     createPatient,
     getPatients,
@@ -9,8 +6,12 @@ const {
     deletePatient,
     updatePatient,
 } = require ('../controllers/patientController')
+const requireAuth = ('../middleware/requireAuth')
 
-const router = express.Router()
+const router = express.Router();
+
+//require authorization for all routes
+//router.use(requireAuth)
 
 //GET all patients
 router.get('/', getPatients )
