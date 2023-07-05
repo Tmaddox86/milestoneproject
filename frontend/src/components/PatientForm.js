@@ -1,8 +1,11 @@
 import { useState} from "react"
 import { usePatientsContext } from '../hooks/usePatientsContext'
+import {useAuthContext} from '../hooks/useAuthContext'
 
 const PatientForm = () => {
     const { dispatch } = usePatientsContext()
+    const {user} = useAuthContext()
+
     const [name, setName] = useState('')
     const [race, setRace] = useState('')
     const [age, setAge] = useState('')
@@ -13,13 +16,18 @@ const PatientForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        if (!user){
+            setError('You must be logged in')
+            return
+        }
         const patient = {name, race, age, mobile}
     
         const response = await fetch('/api/patients', {
             method: 'POST',
             body: JSON.stringify(patient),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
         const json = await response.json()
@@ -36,7 +44,6 @@ const PatientForm = () => {
             setMobile('')
             setError(null)
             setEmptyFields([])
-            console.log('New Patient Added', json)
             dispatch({type: 'CREATE_PATIENT', payload: json})
         }
     }
@@ -58,6 +65,7 @@ const PatientForm = () => {
                 type="text"
                 onChange={(e) => setRace(e.target.value)}
                 value = {race}
+                className={emptyFields.includes('race') ? 'error' : ''}
             />
 
             <label>Patient Age</label>

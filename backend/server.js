@@ -1,23 +1,22 @@
 require('dotenv').config()
 
 const express = require('express')
-
 const mongoose = require('mongoose')
-
 const patientRoutes = require('./routes/patientRoute')
-
 const userRoutes = require('./routes/user')
+
 
 //express app
 const app = express()
 
 //middleware
-app.use((req, res, next) => {
+app.use(express.json())
+app.use((req, _res, next) => {
     console.log(req.path, req.method)
     next()
 })
 
-app.use(express.json())
+
 
 //routes
 app.use('/api/patients', patientRoutes)
