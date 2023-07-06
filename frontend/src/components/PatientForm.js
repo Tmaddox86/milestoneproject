@@ -1,94 +1,93 @@
-import { useState} from "react"
-import { usePatientsContext } from '../hooks/usePatientsContext'
-import {useAuthContext} from '../hooks/useAuthContext'
+import { useState } from "react"
+import { usePatientsContext } from "../hooks/usePatientsContext"
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const PatientForm = () => {
-    const { dispatch } = usePatientsContext()
-    const {user} = useAuthContext()
+  const { dispatch } = usePatientsContext()
+  const { user } = useAuthContext()
 
-    const [name, setName] = useState('')
-    const [race, setRace] = useState('')
-    const [age, setAge] = useState('')
-    const [mobile, setMobile] = useState('')
-    const [error, setError] = useState(null)
-    const [emptyFields, setEmptyFields] = useState([])
+  const [name, setName] = useState('')
+  const [race, setRace] = useState('')
+  const [age, setAge] = useState('')
+  const [mobile, setMobile] = useState('')
+  const [error, setError] = useState(null)
+  const [emptyFields, setEmptyFields] = useState([])
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
+  const handleSubmit = async (e) => {
+    e.preventDefault()
 
-        if (!user){
-            setError('You must be logged in')
-            return
-        }
-        const patient = {name, race, age, mobile}
-    
-        const response = await fetch('/api/patients', {
-            method: 'POST',
-            body: JSON.stringify(patient),
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${user.token}`
-            }
-        })
-        const json = await response.json()
-
-        if(!response.ok) {
-            setError(json.error)
-            setEmptyFields(json.emptyFields)
-        }
-
-        if(response.ok) {
-            setName('')
-            setRace('')
-            setAge('')
-            setMobile('')
-            setError(null)
-            setEmptyFields([])
-            dispatch({type: 'CREATE_PATIENT', payload: json})
-        }
+    if (!user) {
+      setError('You must be logged in')
+      return
     }
 
-    return (
-        <form className="create" onSubmit= {handleSubmit}>
-            <h3>Add New Patient</h3>
+    const patient = {name, race, age, mobile}
 
-            <label>Patient Name</label>
-            <input 
-                type="text"
-                onChange={(e) => setName(e.target.value)}
-                value = {name}
-                className={emptyFields.includes('name') ? 'error' : ''}
-            />
+    const response = await fetch('/api/patients', {
+      method: 'POST',
+      body: JSON.stringify(patient),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
+      }
+    })
+    const json = await response.json()
 
-            <label>Patient Race</label>
-            <input 
-                type="text"
-                onChange={(e) => setRace(e.target.value)}
-                value = {race}
-                className={emptyFields.includes('race') ? 'error' : ''}
-            />
+    if (!response.ok) {
+      setError(json.error)
+      setEmptyFields(json.emptyFields)
+    }
+    if (response.ok) {
+      setName('')
+      setRace('')
+      setAge('')
+      setMobile('')
+      setError(null)
+      setEmptyFields([])
+      dispatch({type: 'CREATE_PATIENT', payload: json})
+    }
+  }
 
-            <label>Patient Age</label>
-            <input 
-                type="number"
-                onChange={(e) => setAge(e.target.value)}
-                value = {age}
-                className={emptyFields.includes('age') ? 'error' : ''}
-            />
+  return (
+    <form className="create" onSubmit={handleSubmit}>
+      <h3>Add a New Patient</h3>
 
-            <label>Patient Mobile</label>
-            <input 
-                type="number"
-                onChange={(e) => setMobile(e.target.value)}
-                value = {mobile}
-                className={emptyFields.includes('mobile') ? 'error' : ''}
-            />
+      <label>Patient Name:</label>
+      <input 
+        type="text"
+        onChange={(e) => setName(e.target.value)}
+        value={name}
+        className={emptyFields.includes('name') ? 'error' : ''}
+      />
 
-        <button>Add Patient</button>
-        {error && <div className="error">{error}</div>}
+      <label>Race:</label>
+      <input 
+        type="text"
+        onChange={(e) => setRace(e.target.value)}
+        value={race}
+        className={emptyFields.includes('race') ? 'error' : ''}
+      />
 
-        </form>
-    )
+      <label>Age:</label>
+      <input 
+        type="number"
+        onChange={(e) => setAge(e.target.value)}
+        value={age}
+        className={emptyFields.includes('age') ? 'error' : ''}
+      />
+
+     <label>Mobile:</label>
+      <input 
+        type="number"
+        onChange={(e) => setMobile(e.target.value)}
+        value={mobile}
+        className={emptyFields.includes('mobile') ? 'error' : ''}
+      />
+
+      <button>Add Patient</button>
+      {error && <div className="error">{error}</div>}
+    </form>
+  )
 }
 
 export default PatientForm

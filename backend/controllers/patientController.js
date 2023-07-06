@@ -2,7 +2,7 @@ const Patient = require('../models/patientModel')
 const mongoose = require('mongoose')
 
 //get all patients
-const getPatients = async (req,res) =>{
+const getPatients = async (_req,res) =>{
     const patients = await Patient.find({}).sort({createdAt:-1})
 
     res.status(200).json(patients)

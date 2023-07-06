@@ -10,11 +10,11 @@ export const patientsReducer = (state, action) => {
         }
         case 'CREATE_PATIENT':
             return {
-                patients: [action.payload, ...state.patient]
+                patient: [action.payload, state.patient]
         }
         case 'DELETE_PATIENT':
             return {
-                patients: state.patient.filter(w => w._id !== action.payload._id)
+                patients: state.patients.filter(w => w._id !== action.payload._id)
         }
         default:
             return state
