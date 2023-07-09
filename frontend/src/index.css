@@ -6,12 +6,10 @@
   --error: #e7195a;
 }
 body {
-  background: rgb(96, 231, 225);
-  margin: 0;
-  font-family: "Caveat";
-}
+  background: radial-gradient(circle, rgb(16, 199, 235) 0%, #30228d 100%);
+  }
 header {
-  background:rgb(96, 231, 225);
+  background: rgb(16, 199, 235);
 }
 header .container {
   max-width: 1400px;
@@ -39,7 +37,7 @@ header a {
   gap: 100px;
 }
 .patient-details {
-  background: beige;
+  background:  rgb(16, 199, 235);
   border-radius: 5px;
   margin: 20px auto;
   padding: 20px;
@@ -93,7 +91,7 @@ form button {
   cursor: pointer;
 }
 .create {
-  background: beige;
+  background:  rgb(16, 199, 235);
   border-radius: 25px;
   margin: 20px auto;
   padding: 20px;
