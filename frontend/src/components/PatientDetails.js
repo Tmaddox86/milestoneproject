@@ -1,39 +1,40 @@
-import {Link} from 'react-router-dom'
-import {useLogout} from '../hooks/useLogOut'
-import {useAuthContext} from '../hooks/useAuthContext'
+import { usePatientsContext } from '../hooks/usePatientsContext'
+import { useAuthContext } from '../hooks/useAuthContext'
 
-const Navbar = () => {
-    const { logout } = useLogout()
-    const { user } = useAuthContext()
+// date fns
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
-    const handleClick = () => {
-        logout()
+const PatientDetails = ({ patient }) => {
+  const { dispatch } = usePatientsContext()
+  const { user } = useAuthContext()
+
+  const handleClick = async () => {
+    if (!user) {
+      return
     }
 
-    return (
-        <header>
-            <div className="container">
-                <Link to="/">
-                    <h1>Small Patient List</h1>
-                </Link>
+    const response = await fetch('/api/patients/' + patient._id, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${user.token}`
+      }
+    })
+    const json = await response.json()
 
-                <nav>
-                    {user && (
-                        <div>
-                            <span>{user.email}</span>
-                            <button onClick={handleClick}>Log Out</button>
-                        </div>
-                    )}
-                    {!user && (
-                    <div>
-                        <Link to = "/login">Login</Link>
-                        <Link to = "/signup">Signup</Link>
-                    </div>
-                    )}
-                </nav>
-            </div>
-        </header>
-    )
+    if (response.ok) {
+      dispatch({type: 'DELETE_PATIENT', payload: json})
+    }
+  }
+
+  return (
+    <div className="patient-details">
+      <h4>{patient.name}</h4>
+      <p><strong>Race </strong>{patient.race}</p>
+      <p><strong>Age </strong>{patient.age}</p>
+      <p>{formatDistanceToNow(new Date(patient.createdAt), { addSuffix: true })}</p>
+      <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
+    </div>
+  )
 }
 
-export default Navbar
+export default PatientDetails
