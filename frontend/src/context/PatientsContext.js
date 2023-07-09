@@ -10,7 +10,7 @@ export const patientsReducer = (state, action) => {
         }
         case 'CREATE_PATIENT':
             return {
-                patient: [action.payload, state.patient]
+                patients: [action.payload, ...state.patients]
         }
         case 'DELETE_PATIENT':
             return {
@@ -32,7 +32,5 @@ export const PatientsContextProvider = ({children}) => {
         </PatientsContext.Provider>
     )
 }
-
-
 
 

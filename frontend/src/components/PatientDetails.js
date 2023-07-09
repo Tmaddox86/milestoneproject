@@ -1,40 +1,39 @@
-import { usePatientsContext } from '../hooks/usePatientsContext'
-import { useAuthContext } from '../hooks/useAuthContext'
+import {Link} from 'react-router-dom'
+import {useLogout} from '../hooks/useLogOut'
+import {useAuthContext} from '../hooks/useAuthContext'
 
-// date fns
-import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+const Navbar = () => {
+    const { logout } = useLogout()
+    const { user } = useAuthContext()
 
-const PatientDetails = ({ patient }) => {
-  const { dispatch } = usePatientsContext()
-  const { user } = useAuthContext()
-
-  const handleClick = async () => {
-    if (!user) {
-      return
+    const handleClick = () => {
+        logout()
     }
 
-    const response = await fetch('/api/patients/' + patient._id, {
-      method: 'DELETE',
-      headers: {
-        'Authorization': `Bearer ${user.token}`
-      }
-    })
-    const json = await response.json()
+    return (
+        <header>
+            <div className="container">
+                <Link to="/">
+                    <h1>Small Patient List</h1>
+                </Link>
 
-    if (response.ok) {
-      dispatch({type: 'DELETE_PATIENT', payload: json})
-    }
-  }
-
-  return (
-    <div className="patient-details">
-      <h4>{patient.name}</h4>
-      <p><strong>Race </strong>{patient.race}</p>
-      <p><strong>Age </strong>{patient.age}</p>
-      <p>{formatDistanceToNow(new Date(patient.createdAt), { addSuffix: true })}</p>
-      <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
-    </div>
-  )
+                <nav>
+                    {user && (
+                        <div>
+                            <span>{user.email}</span>
+                            <button onClick={handleClick}>Log Out</button>
+                        </div>
+                    )}
+                    {!user && (
+                    <div>
+                        <Link to = "/login">Login</Link>
+                        <Link to = "/signup">Signup</Link>
+                    </div>
+                    )}
+                </nav>
+            </div>
+        </header>
+    )
 }
 
-export default PatientDetails
+export default Navbar
