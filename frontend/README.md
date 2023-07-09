@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+This is a small patients list for nurses to log in patients. We built this MERN STACK with Authentication. We used a static method for hashing passwords with bcrypt. Json Web Token was also used to authenticate login users. We used validator to make sure the email and password are valid before entering the app giving error, when not. You can sign up and log in. You must be signed in to view patients list, if not logged in you will not see to add patients. You must have valid password or you will be given an error. Once logged in, you will see add and delete patients, only when logged in. This app was tested through postman. It uses mongoo DB for storing data with patients and users. We could not deploy. We tried using Render.com, could not get the app.js to read, we tried to change app.js to server.js in the root package.json. It was deleted in order for our MERNSTACK to present and show working functional code today. We upgraded the css with a gradient background. we tried to animate the background but ran into useEffect/react-script issuses.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+We installed in our backend
+-express
+-dotenv
+-mongoose
+-node
+-bcrypt
+-validator
+-Json Web Token
 
-## Available Scripts
+We installed in our frontend
+-date-FNS(makes date look formal instead of multiple numbers)
+-react
+-react-scripts
+-material symbol (icons instead of words)
 
-In the project directory, you can run:
+Some methods we used
+-split
+-compare
+-isEmail
+-this.
+-dispatch
+-emptyFields
+-router.
+-app.
+-Navigate
+-.push, .verify, .findOne, .length, .statics
 
-### `npm start`
+Some properties we used
+-state
+-response.ok
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Some functions we used 
+-switch()
+-async/await()
+-.Provider()
+-useReducer()
+-fetch()
+-(e) event handler
+-hash()
+-genSalt()
